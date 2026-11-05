@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brightness preview — HivePic</title>
+<style>body{font-family:system-ui,sans-serif;max-width:40rem;margin:2rem auto;padding:0 1rem;line-height:1.5}
+#preview{width:100%;max-height:280px;object-fit:contain;background:#111;border-radius:8px}
+a.cta{display:inline-block;margin-top:1rem;background:#2563eb;color:#fff;padding:.6rem 1rem;border-radius:6px;text-decoration:none}</style></head>
+<body>
+<h1>Local brightness preview</h1>
+<p>Upload any image — brightness runs only in your browser. For AI background remove and restore tools, use HivePic.</p>
+<input id="file" type="file" accept="image/*">
+<label>Brightness <input id="b" type="range" min="50" max="150" value="100"></label>
+<img id="preview" alt="preview">
+<p><a class="cta" href="https://hivepic.com/">Open HivePic</a></p>
+<script>
+const img=document.getElementById('preview'), b=document.getElementById('b');
+document.getElementById('file').onchange=e=>{const f=e.target.files[0]; if(!f)return; img.src=URL.createObjectURL(f);};
+b.oninput=()=>{img.style.filter=`brightness(${b.value}%)`;};
+</script></body></html>
